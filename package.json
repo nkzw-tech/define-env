@@ -9,7 +9,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "mkdir -p lib && rm -rf lib/*; dts-bundle-generator -o lib/index.d.ts src/index.ts && prettier --ignore-path '' --write lib/index.d.ts && esbuild --target=es2024 --format=esm --outfile=lib/index.js --bundle ./src/index.ts",
+    "build": "mkdir -p lib && tsup src/index.ts -d lib --target=node22 --format=esm --clean --no-splitting --dts",
     "format": "prettier \"**/*.{js,jsx,json,tsx,ts}\" --write",
     "lint": "eslint --cache .",
     "test": "tsc && pnpm lint && vitest"
@@ -38,10 +38,9 @@
     "@types/node": "^22.13.5",
     "@typescript-eslint/eslint-plugin": "^8.24.1",
     "@typescript-eslint/parser": "^8.24.1",
-    "dts-bundle-generator": "^9.5.1",
-    "esbuild": "^0.24.2",
     "eslint": "^9.21.0",
     "prettier": "^3.5.2",
+    "tsup": "^8.4.0",
     "typescript": "^5.7.3",
     "vitest": "^3.0.6"
   }
